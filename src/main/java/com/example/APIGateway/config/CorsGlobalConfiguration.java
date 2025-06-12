@@ -12,7 +12,7 @@ public class CorsGlobalConfiguration {
     @Bean
     public CorsWebFilter corsWebFilter() {
         CorsConfiguration corsConfig = new CorsConfiguration();
-        corsConfig.addAllowedOrigin("http://localhost:5173");
+        corsConfig.addAllowedOrigin("https://ktpm-lab01-frontend.onrender.com");
         corsConfig.addAllowedMethod("*"); // GET, POST, PUT, DELETE
         corsConfig.addAllowedHeader("*");
 
