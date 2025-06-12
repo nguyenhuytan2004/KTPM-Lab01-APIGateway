@@ -1,0 +1,26 @@
+spring:
+    application:
+        name: APIGateway
+    cloud:
+        gateway:
+            server:
+                webflux:
+                    routes:
+                        - id: movie-service
+                          uri: https://ktpm-lab01-movieservice.onrender.com
+                          predicates:
+                              - Path=/api/movies/**
+                        - id: user-service
+                          uri: https://ktpm-lab01-userservice.onrender.com
+                          predicates:
+                              - Path=/api/user/**
+                        - id: seat-service
+                          uri: https://seatserver.onrender.com
+                          predicates:
+                              - Path=/api/seats/**
+                        - id: payment-service
+                          uri: https://paymentserver-wtw6.onrender.com
+                          predicates:
+                              - Path=/api/book/**
+server:
+    port: 8088
