@@ -1,3 +1,32 @@
+# This is config for local
+# spring:
+#     application:
+#         name: APIGateway
+#     cloud:
+#         gateway:
+#             server:
+#                 webflux:
+#                     routes:
+#                         - id: movie-service
+#                           uri: http://localhost:8081
+#                           predicates:
+#                               - Path=/api/movies/**
+#                         - id: payment-server
+#                           uri: http://localhost:8082
+#                           predicates:
+#                               - Path=/api/book/**
+#                         - id: seat-server
+#                           uri: http://localhost:8083
+#                           predicates:
+#                               - Path=/api/seats/**
+#                         - id: user-service
+#                           uri: http://localhost:8084
+#                           predicates:
+#                               - Path=/api/user/**
+# server:
+#     port: 8080
+
+# This is config for docker
 spring:
     application:
         name: APIGateway
@@ -7,20 +36,20 @@ spring:
                 webflux:
                     routes:
                         - id: movie-service
-                          uri: https://ktpm-lab01-movieservice.onrender.com
+                          uri: http://movie-service:8081
                           predicates:
                               - Path=/api/movies/**
-                        - id: user-service
-                          uri: https://ktpm-lab01-userservice.onrender.com
-                          predicates:
-                              - Path=/api/user/**
-                        - id: seat-service
-                          uri: https://seatserver.onrender.com
-                          predicates:
-                              - Path=/api/seats/**
-                        - id: payment-service
-                          uri: https://paymentserver-wtw6.onrender.com
+                        - id: payment-server
+                          uri: http://payment-server:8082
                           predicates:
                               - Path=/api/book/**
+                        - id: seat-server
+                          uri: http://seat-server:8083
+                          predicates:
+                              - Path=/api/seats/**
+                        - id: user-service
+                          uri: http://user-service:8084
+                          predicates:
+                              - Path=/api/user/**
 server:
-    port: 8088
+    port: 8080
